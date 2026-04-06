@@ -46,9 +46,7 @@ const Navbar = () => {
               Brinquedos
             </a>
             <a
-              href={generateWhatsAppLink(
-                "Olá! Gostaria de um orçamento para aluguel de brinquedos infláveis em Maceió.",
-              )}
+              href={generateWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
               className="bg-[#25D366] hover:bg-[#128C7E] text-white px-6 py-2.5 rounded-full font-display font-bold transition-all shadow-cartoon hover:shadow-cartoon-hover flex items-center gap-2 border-2 border-text"
@@ -93,9 +91,7 @@ const Navbar = () => {
                 Brinquedos
               </a>
               <a
-                href={generateWhatsAppLink(
-                  "Olá! Gostaria de um orçamento para aluguel de brinquedos infláveis em Maceió.",
-                )}
+                href={generateWhatsAppLink()}
                 target="_blank"
                 rel="noopener noreferrer"
                 className="mt-4 w-full bg-[#25D366] hover:bg-[#128C7E] text-white px-3 py-3 rounded-full font-display font-bold text-center flex items-center justify-center gap-2 border-2 border-text shadow-cartoon"

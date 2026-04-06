@@ -14,7 +14,6 @@ import {
   X,
   Maximize2
 } from "lucide-react";
-import { Logo } from "./Logo";
 import { generateWhatsAppLink } from "../utils/whatsapp";
 import { toys } from "../data/toys";
 
@@ -75,7 +74,7 @@ const Catalog = () => {
 
                   <div className="flex flex-col gap-3 mt-auto">
                     <a
-                      href={generateWhatsAppLink(`Olá! Tenho interesse no brinquedo: ${toy.name}.`)}
+                      href={generateWhatsAppLink(toy.name)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full bg-[#25D366] hover:bg-[#128C7E] text-white font-display font-bold py-3 px-2 rounded-full flex items-center justify-center gap-2 transition-all shadow-cartoon hover:shadow-cartoon-hover border-2 border-text"
@@ -84,7 +83,7 @@ const Catalog = () => {
                       Consultar no WhatsApp
                     </a>
                     <a
-                      href={generateWhatsAppLink(`Olá! Gostaria de ver a disponibilidade do brinquedo: ${toy.name}.`)}
+                      href={generateWhatsAppLink(toy.name)}
                       target="_blank"
                       rel="noopener noreferrer"
                       className="w-full bg-secondary hover:bg-cyan-400 text-white font-display font-bold py-3 px-4 rounded-full flex items-center justify-center gap-2 transition-all shadow-cartoon hover:shadow-cartoon-hover border-2 border-text mt-2"

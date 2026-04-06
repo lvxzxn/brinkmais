@@ -8,9 +8,7 @@ const FloatingWhatsApp = () => {
       initial={{ scale: 0 }}
       animate={{ scale: 1 }}
       transition={{ type: "spring", delay: 1 }}
-      href={generateWhatsAppLink(
-        "Olá! Vim pelo site e gostaria de um orçamento.",
-      )}
+      href={generateWhatsAppLink()}
       target="_blank"
       rel="noopener noreferrer"
       className="fixed bottom-6 right-6 z-50 bg-[#25D366] text-white p-4 rounded-full shadow-cartoon hover:shadow-cartoon-hover hover:bg-[#128C7E] transition-all group flex items-center gap-0 hover:gap-3 overflow-hidden border-2 border-text"

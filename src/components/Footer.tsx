@@ -65,7 +65,7 @@ const Footer = () => {
                   size={24}
                 />
                 <a
-                  href={generateWhatsAppLink("Olá!")}
+                  href={generateWhatsAppLink()}
                   target="_blank"
                   rel="noopener noreferrer"
                   className="hover:text-white transition-colors"

@@ -50,9 +50,7 @@ const MainCTA = () => {
           transition={{ delay: 0.4 }}
         >
           <a
-            href={generateWhatsAppLink(
-              "Olá! Quero garantir a diversão da minha festa. Quais brinquedos estão disponíveis?",
-            )}
+            href={generateWhatsAppLink()}
             target="_blank"
             rel="noopener noreferrer"
             className="inline-flex items-center justify-center gap-3 bg-[#25D366] hover:bg-[#128C7E] text-white font-display font-extrabold text-2xl py-5 px-10 rounded-full shadow-cartoon hover:shadow-cartoon-hover transition-all border-4 border-text"

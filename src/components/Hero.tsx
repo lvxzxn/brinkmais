@@ -76,9 +76,7 @@ const Hero = () => {
               <ChevronRight size={24} />
             </a>
             <a
-              href={generateWhatsAppLink(
-                "Olá! Gostaria de saber mais sobre o aluguel de brinquedos infláveis em Maceió.",
-              )}
+              href={generateWhatsAppLink()}
               target="_blank"
               rel="noopener noreferrer"
               className="w-full sm:w-auto bg-[#25D366] hover:bg-[#128C7E] text-white font-display font-bold text-xl py-4 px-8 rounded-full shadow-cartoon hover:shadow-cartoon-hover transition-all flex items-center justify-center gap-2 border-2 border-text"
