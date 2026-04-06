@@ -14,7 +14,7 @@ export const toys = [
   {
     id: 3,
     name: "Futebol de Sabão 4x8",
-    description: "A maior diversão para todas as idades! Uma arena inflável para partidas épicas e muitos escorregões seguros.",
+    description: "A maior diversão para crianças de até 14 anos! Uma arena inflável para partidas épicas e muitos escorregões seguros.",
     image: "/foto-futebol.jpeg",
   },
   {
