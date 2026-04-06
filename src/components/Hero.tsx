@@ -17,7 +17,7 @@ const Hero = () => {
         preload="auto"
         className="w-full h-full object-cover"
       >
-        <source src="/video-trimado.mp4" type="video/mp4" />
+        <source src="/brinkmais-brinquedos.mp4" type="video/mp4" />
       </video>
         <div className="absolute inset-0 bg-black/50 z-0 pointer-events-none"></div>
       </div>
