@@ -1,0 +1,100 @@
+@import url('https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Nunito:wght@400;600;700;800;900&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --color-primary: #FF3366;
+  --color-secondary: #00C4FF;
+  --color-accent: #FFCC00;
+  --color-green-fun: #00D084;
+  --color-purple-fun: #9D00FF;
+  --color-background: #FAF7FA;
+  --color-text: #1E293B;
+
+  --font-sans: 'Nunito', system-ui, sans-serif;
+  --font-display: 'Fredoka', system-ui, sans-serif;
+}
+
+body {
+  background-color: var(--color-background);
+  color: var(--color-text);
+  font-family: var(--font-sans);
+  overflow-x: hidden;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6,
+.font-display {
+  font-family: var(--font-display);
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+.shadow-cartoon {
+  box-shadow: 6px 6px 0px 0px rgba(30, 41, 59, 1);
+}
+
+.shadow-cartoon-hover:hover {
+  box-shadow: 10px 10px 0px 0px rgba(30, 41, 59, 1);
+  transform: translate(-4px, -4px);
+}
+
+.text-stroke-white {
+  -webkit-text-stroke: 1px white;
+  color: transparent;
+}
+
+.text-stroke-dark {
+  -webkit-text-stroke: 1px #1E293B;
+}
+
+@keyframes spin-slow {
+  from {
+    transform: rotate(0deg);
+  }
+
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.animate-spin-slow {
+  animation: spin-slow 12s linear infinite;
+}
+
+@keyframes bounce-fun {
+
+  0%,
+  100% {
+    transform: translateY(-5%);
+  }
+
+  50% {
+    transform: translateY(5%);
+  }
+}
+
+.animate-bounce-fun {
+  animation: bounce-fun 3s infinite ease-in-out;
+}
+
+@keyframes wiggle {
+
+  0%,
+  100% {
+    transform: rotate(-3deg);
+  }
+
+  50% {
+    transform: rotate(3deg);
+  }
+}
+
+.animate-wiggle {
+  animation: wiggle 2s infinite ease-in-out;
+}
