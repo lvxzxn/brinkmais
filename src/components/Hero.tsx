@@ -10,11 +10,11 @@ const Hero = () => {
     <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-40 pb-48">
       <div className="absolute inset-0 w-full h-full z-0">
         <video
-          src="/brinkmais-brinquedos.mp4"
           autoPlay
           muted
           loop
           playsInline
+          preload="auto"
           className="w-full h-full object-cover"
           onTimeUpdate={(e) => {
             const video = e.currentTarget;
@@ -22,11 +22,18 @@ const Hero = () => {
               video.currentTime = 0;
             }
           }}
+          onCanPlay={(e) => {
+            const video = e.currentTarget;
+            video.muted = true; // Fix para Safari
+            video.play().catch(() => {
+              console.log("Autoplay bloqueado pelo iOS Low Power Mode");
+            });
+          }}
         >
-          <source src="/video.mp4" type="video/mp4" />
+          <source src="/brinkmais-brinquedos.mp4" type="video/mp4" />
           Seu navegador não suporta vídeos.
         </video>
-        <div className="absolute inset-0 bg-black/50 z-0"></div>
+        <div className="absolute inset-0 bg-black/50 z-0 pointer-events-none"></div>
       </div>
 
       <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-10">

@@ -14,9 +14,6 @@ import {
   X,
   Maximize2
 } from "lucide-react";
-import { Logo } from "./Logo";
-import { generateWhatsAppLink } from "../utils/whatsapp";
-import { toys } from "../data/toys";
 
 const About = () => {
   return (
@@ -31,13 +28,22 @@ const About = () => {
           >
             <div className="relative rounded-3xl overflow-hidden group">
               <video
-                src="/brinkmais-animated2.mp4?v=50"
                 autoPlay
                 muted
                 loop
                 playsInline
+                preload="auto"
                 className="w-full h-auto object-cover"
-              />
+                onCanPlay={(e) => {
+                  const video = e.currentTarget;
+                  video.muted = true;
+                  video.play().catch(() => {
+                    console.log("Autoplay bloqueado");
+                  });
+                }}
+              >
+                <source src="/brinkmais-animated2.mp4?v=50" type="video/mp4" />
+              </video>
               <div
                 className="absolute inset-0 pointer-events-none rounded-2xl z-10 
                border-10 border-dashed border-accent 
