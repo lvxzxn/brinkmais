@@ -1,28 +1,137 @@
-import { motion } from "motion/react";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "motion/react";
 import {
   MessageCircle,
   ChevronRight,
+  ChevronLeft,
 } from "lucide-react";
 import { generateWhatsAppLink } from "../utils/whatsapp";
 
+const CAROUSEL_IMAGES = [
+  "/carousel-1.jpeg",
+  "/carousel-2.jpeg",
+  "/carousel-3.jpeg",
+];
+
+const wrap = (min: number, max: number, v: number) => {
+  const rangeSize = max - min;
+  return ((((v - min) % rangeSize) + rangeSize) % rangeSize) + min;
+};
+
+const carouselVariants = {
+  enter: (direction: number) => ({
+    x: direction > 0 ? "100%" : "-100%",
+    opacity: 0.5,
+    scale: 0.8,
+    rotate: direction > 0 ? 5 : -5,
+  }),
+  center: {
+    x: 0,
+    opacity: 1,
+    scale: 1,
+    rotate: 0,
+  },
+  exit: (direction: number) => ({
+    x: direction < 0 ? "100%" : "-100%",
+    opacity: 0,
+    scale: 1.1,
+    rotate: direction < 0 ? 5 : -5,
+  }),
+};
+
 const Hero = () => {
+  const [[page, direction], setPage] = useState([0, 0]);
+  const imageIndex = wrap(0, CAROUSEL_IMAGES.length, page);
+
+  const paginate = (newDirection: number) => {
+    setPage([page + newDirection, newDirection]);
+  };
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      paginate(1);
+    }, 5000);
+    return () => clearInterval(interval);
+  }, [page]);
+
   return (
-    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-40 pb-48">
-      <div className="absolute inset-0 w-full h-full z-0">
-      <video
-        autoPlay
-        muted
-        loop
-        playsInline
-        preload="auto"
-        className="w-full h-full object-cover"
-      >
-        <source src="/brinkmais-brinquedos.mp4" type="video/mp4" />
-      </video>
-        <div className="absolute inset-0 bg-black/50 z-0 pointer-events-none"></div>
+    <section className="relative min-h-screen flex items-center justify-center overflow-hidden pt-40 pb-48 group">
+      <div className="absolute inset-0 w-full h-full z-0 bg-background overflow-hidden">
+        <AnimatePresence initial={false} custom={direction}>
+          <motion.img
+            key={page}
+            src={CAROUSEL_IMAGES[imageIndex]}
+            custom={direction}
+            variants={carouselVariants}
+            initial="enter"
+            animate="center"
+            exit="exit"
+            transition={{
+              x: { type: "spring", stiffness: 200, damping: 25 },
+              opacity: { duration: 0.4 },
+              scale: { duration: 0.6 },
+              rotate: { type: "spring", stiffness: 100, damping: 20 }
+            }}
+            alt={`Banner animado ${imageIndex + 1}`}
+            className="absolute inset-0 w-full h-full object-cover origin-center"
+          />
+        </AnimatePresence>
+        <div className="absolute inset-0 bg-black/50 z-10 pointer-events-none"></div>
       </div>
 
-      <div className="relative z-20 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center mt-10">
+      <button
+        onClick={() => paginate(-1)}
+        className="absolute left-4 z-30 p-3 md:p-4 bg-accent hover:bg-yellow-400 text-white rounded-full shadow-cartoon hover:shadow-cartoon-hover transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 hover:scale-110 active:scale-95 border-2 border-text -translate-y-1/2 top-1/2"
+        aria-label="Imagem anterior"
+      >
+        <ChevronLeft size={36} className="text-text" />
+      </button>
+      <button
+        onClick={() => paginate(1)}
+        className="absolute right-4 z-30 p-3 md:p-4 bg-accent hover:bg-yellow-400 text-white rounded-full shadow-cartoon hover:shadow-cartoon-hover transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 hover:scale-110 active:scale-95 border-2 border-text -translate-y-1/2 top-1/2"
+        aria-label="Próxima imagem"
+      >
+        <ChevronRight size={36} className="text-text" />
+      </button>
+
+      {/* Stylized Animated Dots */}
+      <div className="absolute bottom-20 md:bottom-28 left-0 right-0 z-30 flex items-center justify-center gap-4">
+        {CAROUSEL_IMAGES.map((_, index) => {
+          const isActive = index === imageIndex;
+          return (
+            <button
+              key={index}
+              onClick={() => {
+                const diff = index - imageIndex;
+                if (diff !== 0) setPage([page + diff, diff > 0 ? 1 : -1]);
+              }}
+              className="relative group/dot flex items-center justify-center p-2"
+              aria-label={`Ir para a imagem ${index + 1}`}
+            >
+              <motion.div
+                initial={false}
+                animate={{
+                  width: isActive ? 48 : 16,
+                  backgroundColor: isActive ? "#FFD166" : "rgba(255,255,255,0.5)",
+                }}
+                className={`h-4 rounded-full border-2 border-text shadow-cartoon transition-all hover:bg-white`}
+              />
+              {isActive && (
+                <motion.div
+                  layoutId="activeDotOutline"
+                  className="absolute inset-0 rounded-full border-2 border-white pointer-events-none"
+                  initial={{ opacity: 0, scale: 0.8 }}
+                  animate={{ opacity: 1, scale: 1.1 }}
+                  exit={{ opacity: 0, scale: 0.8 }}
+                  transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                />
+              )}
+            </button>
+          );
+        })}
+      </div>
+
+      <div className="relative z-20 max-w-7xl mx-auto px-12 sm:px-16 lg:px-24 text-center mt-10">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
@@ -73,6 +182,7 @@ const Hero = () => {
           </div>
         </motion.div>
       </div>
+
       <div className="absolute bottom-0 left-0 w-full overflow-hidden leading-none z-20">
         <svg
           className="relative block w-full h-12.5 md:h-25"

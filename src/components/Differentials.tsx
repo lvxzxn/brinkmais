@@ -5,6 +5,7 @@ import {
   Truck,
   ShieldCheck,
   Sparkles,
+  CreditCard,
 } from "lucide-react";
 const Differentials = () => {
   const diffs = [
@@ -12,6 +13,11 @@ const Differentials = () => {
       icon: <Truck size={40} />,
       title: "Entrega e Montagem",
       desc: "Inclusa para toda Maceió. Nós cuidamos do trabalho pesado!",
+    },
+    {
+      icon: <CreditCard size={40} />,
+      title: "Pagamento Facilitado",
+      desc: "Parcele tudo em até 10x sem juros nos cartões de crédito.",
     },
     {
       icon: <Sparkles size={40} />,
@@ -45,7 +51,7 @@ const Differentials = () => {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
+        <div className="flex flex-wrap justify-center gap-8">
           {diffs.map((diff, index) => (
             <motion.div
               key={index}
@@ -54,7 +60,7 @@ const Differentials = () => {
               viewport={{ once: true }}
               transition={{ delay: index * 0.1, type: "spring" }}
               whileHover={{ y: -10 }}
-              className="bg-white p-8 rounded-2xl shadow-cartoon hover:shadow-cartoon-hover border-2 border-text text-center flex flex-col items-center transition-all"
+              className="bg-white p-8 rounded-2xl shadow-cartoon hover:shadow-cartoon-hover border-2 border-text text-center flex flex-col items-center transition-all w-full md:w-[calc(50%-1rem)] lg:w-[calc(25%-1.5rem)] min-w-[250px] max-w-[320px] flex-grow"
             >
               <div className="text-white mb-6 bg-secondary p-5 rounded-full shadow-cartoon border-2 border-text transform -rotate-6 animate-wiggle">
                 {diff.icon}
