@@ -60,11 +60,17 @@ const Catalog = () => {
                     className="w-full h-full object-cover group-hover:scale-110 transition-transform duration-500"
                     loading="lazy"
                   />
-                  {/* Overlay de Hover para indicar que pode expandir */}
-                  <div className="absolute inset-0 bg-black/20 opacity-0 group-hover:opacity-100 transition-opacity flex items-center justify-center">
-                    <div className="bg-white p-2 rounded-full shadow-lg">
-                      <Maximize2 size={24} className="text-primary" />
+                  <div className="absolute top-2 right-2 bg-white/90 backdrop-blur-sm md:hidden px-2 py-1 flex items-center gap-1 rounded-full shadow-cartoon border border-text z-10">
+                    <Maximize2 size={12} className="text-primary" />
+                    <span className="text-[10px] font-bold text-text uppercase">Ampliar</span>
+                  </div>
+                  <div className="absolute inset-0 bg-black/40 opacity-0 group-hover:opacity-100 transition-all duration-300 flex flex-col items-center justify-center gap-3">
+                    <div className="bg-white p-3 rounded-full shadow-cartoon transform scale-75 group-hover:scale-100 transition-transform duration-300">
+                      <Maximize2 size={28} className="text-primary" />
                     </div>
+                    <span className="text-white font-display font-bold text-sm bg-primary px-4 py-1.5 rounded-full shadow-cartoon border-2 border-text transform translate-y-4 group-hover:translate-y-0 transition-transform duration-300">
+                      Clique para expandir
+                    </span>
                   </div>
                 </div>
 
