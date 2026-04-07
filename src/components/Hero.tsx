@@ -84,14 +84,14 @@ const Hero = () => {
         className="absolute left-4 z-30 p-3 md:p-4 bg-accent hover:bg-yellow-400 text-white rounded-full shadow-cartoon hover:shadow-cartoon-hover transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 hover:scale-110 active:scale-95 border-2 border-text -translate-y-1/2 top-1/2"
         aria-label="Imagem anterior"
       >
-        <ChevronLeft size={36} className="text-text" />
+        <ChevronLeft size={36} className="text-white" />
       </button>
       <button
         onClick={() => paginate(1)}
         className="absolute right-4 z-30 p-3 md:p-4 bg-accent hover:bg-yellow-400 text-white rounded-full shadow-cartoon hover:shadow-cartoon-hover transition-all opacity-0 group-hover:opacity-100 focus:opacity-100 hover:scale-110 active:scale-95 border-2 border-text -translate-y-1/2 top-1/2"
         aria-label="Próxima imagem"
       >
-        <ChevronRight size={36} className="text-text" />
+        <ChevronRight size={36} className="text-white" />
       </button>
 
       {/* Stylized Animated Dots */}
@@ -142,7 +142,7 @@ const Hero = () => {
             initial={{ scale: 0 }}
             animate={{ scale: 1 }}
             transition={{ delay: 0.2, type: "spring", stiffness: 200 }}
-            className="inline-block bg-accent px-6 py-2 rounded-full shadow-cartoon text-white font-bold text-lg mb-6 border-2 border-text transform -rotate-2 animate-wiggle"
+            className="inline-block bg-white px-6 py-2 rounded-full shadow-cartoon text-accent font-bold text-lg mb-6 border-2 border-text transform -rotate-2 animate-wiggle"
           >
             ✨ A diversão não pode parar!
           </motion.div>
