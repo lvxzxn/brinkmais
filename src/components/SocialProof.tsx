@@ -15,7 +15,7 @@ const SocialProof = () => {
     { icon: <Star size={32} />, value: "+500", label: "Clientes Satisfeitos" },
     {
       icon: <Sparkles size={32} />,
-      value: "+6",
+      value: "+5",
       label: "Brinquedos Disponíveis",
     },
     {
